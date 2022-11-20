@@ -1,7 +1,4 @@
 <script setup>
-// import { useRoute } from 'vue-router';
-// const route = useRoute();  
-// const logout = route.params.logout;  
 defineProps({
     logoutText:{
             required:true,
@@ -22,7 +19,6 @@ export default {
             username:"",
             password:"",
             logOutMessage: "",
-            message: "",
             logout: false,
             selectRole: false,
             lgtext: this.logoutText
@@ -46,63 +42,58 @@ export default {
             console.log(value)
         }
     }
-    // , 
-    // computed:{
-    //     getRole(){
-    //         return this.role
-    //     }
-    // }
 };
 </script>
 
 <template>
     <div class="col-centered login-form">
-                <h2 class="text-center">
-            <a class="logo">
-                <img id="loginImg" src='./../assets/logo.png' />
-            </a>
-            </h2> 
-            <br>
-            <h6 class="text-center" v-if="lgtext" v-show="logoutText">Successfully Logged Out</h6> 
-            <h6 class="text-center" v-if="selectRole">Please select a role</h6> 
-            <br> 
-            <h6>{{message}}</h6>
-            <h5 class="text-center">Login</h5>
-            <div class="form-group">
-                <input type="text" v-model="username" class="form-control" name="username" placeholder="Username">
-            </div>
-            <div class="form-group">
-                <input type="password" v-model="password" class="form-control" name="password" placeholder="Password">
-            </div>    
-			<div class="form-group">
-				<div class="row ml-1">
-				<div class="form-check col-6 mr-3">
-                    <input v-model="role"   class="form-check-input" value="customer" type="radio" name="roleSelect" id="customer" >
-					<label class="form-check-label" for="customer">
-                    Customer
-					</label>
-				  </div>
-				  <div class="form-check col-6">
-					<input v-model="role" class="form-check-input" type="radio" value="staff" name="roleSelect" id="staff">
-					<label class="form-check-label" for="staff">
-					  Staff
-					</label>
-				  </div>
-				  </div>
-            </div>       
-            <div class="form-group">
-                <button type="submit" @click="login" class="btn btn-primary btn-lg btn-block" style="font-weight:normal;">Login</button>
-            </div>
+      <h2 class="text-center">
+        <a class="logo">
+          <img id="loginImg" src='./../assets/logo.png' />
+        </a>
+      </h2>
+
+      <br>
+
+      <h6 class="text-center" v-if="lgtext" v-show="logoutText">Successfully Logged Out</h6>
+      <h6 class="text-center" v-if="selectRole">Please select a role</h6>
+
+      <br>
+
+      <h5 class="text-center">Login</h5>
+
+      <div class="form-group">
+        <input type="text" v-model="username" class="form-control" name="username" placeholder="Username">
+      </div>
+
+      <div class="form-group">
+        <input type="password" v-model="password" class="form-control" name="password" placeholder="Password">
+      </div>
+
+      <div class="form-group">
+        <div class="row ml-1">
+          <div class="form-check col-6 mr-3">
+            <input v-model="role" class="form-check-input" type="radio" value="customer" name="roleSelect" id="customer" >
+            <label class="form-check-label" for="customer">
+              Customer
+            </label>
+          </div>
+          <div class="form-check col-6">
+            <input v-model="role" class="form-check-input" type="radio" value="staff" name="roleSelect" id="staff">
+            <label class="form-check-label" for="staff">
+              Staff
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" v-on:click="login()" class="btn btn-primary btn-lg btn-block" style="font-weight:normal;">Login</button>
+      </div>
     </div>
 </template>
 
+
 <style scoped>
-.main-content {
-  padding-top:80px;
-  padding-left: 20px;
-  padding-right: 20px;
-  display: flex;
-} 
 .form-control {
 	min-height: 41px;
 	background: #fff;
@@ -116,7 +107,6 @@ export default {
 	border-radius: 2px;
 }
 .login-form {
-    float:none;	
     margin-top:70px;
 }
 @media only screen and (min-width: 1000px) {
@@ -128,7 +118,6 @@ export default {
         height:20%;
     }
 }
-
 
 .login-form form {
 	color: #7a7a7a;
@@ -191,8 +180,6 @@ export default {
         height:40%;
     }
 }
-
-
 </style>
 
 

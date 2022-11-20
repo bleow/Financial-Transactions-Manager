@@ -2,10 +2,10 @@
 import SuccessTransaction from "../components/SuccessTransaction.vue";
 import currencies from "currencies.json";
 import axios from "axios";
+
 export default {
   data() {
     let props = {
-      transactionDate: "",
       mcc: "",
       merchant: "",
       currency: "",
@@ -44,10 +44,12 @@ export default {
           card_pan: this.props.cardNum,
           card_type: this.props.cardtype
         });
+        console.log(data);
 
         var config = {
         method: 'post',
-        url: 'https://wn67is82a0.execute-api.us-east-1.amazonaws.com/1/transactions',
+        url: 'http://127.0.0.1:8080',
+          //url: 'https://wn67is82a0.execute-api.us-east-1.amazonaws.com/1/transactions',
         headers: {
         'Content-Type': 'application/json'
         },
@@ -70,46 +72,7 @@ export default {
         .catch(function (error) {
         console.log(error);
         });
-
-        // var config = {
-        //     method: "post",
-        //     url: "https://wn67is82a0.execute-api.us-east-1.amazonaws.com/1",
-        //     headers: {'Access-Control-Allow-Origin': '*'},
-        //     body:{
-        //       transaction_date: this.props.transactionDate,
-        //       merchant: this.props.merchant,
-        //       mcc: this.props.mcc,
-        //       currency: this.props.currency,
-        //       amount: this.props.amount,
-        //       card_pan: this.props.cardNum,
-        //       card_type: this.props.cardtype
-        //     }
-        //     };
-        //     const response = await axios(config).then(res=>{
-        //       console.log(res)
-        //     }).catch(err=>{
-        //       console.log(err)
-        //     })    
-        // this.showSuccess = true;
       }
-      // console.log(
-      //   this.transaction = JSON.parse(
-      //     JSON.stringify({
-      //       transaction_date: this.props.transactionDate,
-      //       merchant: this.props.merchant,
-      //       mcc: this.props.mcc,
-      //       currency: this.props.currency,
-      //       amount: this.props.amount,
-      //       card_pan: this.props.cardNum,
-      //       card_type: this.props.cardtype,
-      //     })
-      //   )
-      // );
-      // if(this.transactionDate.length == 0){
-      //   this.showSuccess = true;
-      //   this.errormsge = "Transaction Date is empty";
-      //   this.showError = true;
-      // }
     },
     close(value) {
       if (value == "close") {
@@ -144,6 +107,7 @@ export default {
   },
 };
 </script>
+
 
 <template>
   <main class="main-content">

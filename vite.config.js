@@ -9,6 +9,8 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
   plugins: [vue()],
   define: {
+    // https://github.com/permafrost-dev/vue-ray/issues/3
+    global: {},
     'process.env': process.env
   },
   resolve: {

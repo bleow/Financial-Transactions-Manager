@@ -36,19 +36,20 @@ export default {
 </script>
 
 <template>
-    <div v-show="show" class="row successRow">
+    <div v-show="show" class="row successRow d-flex align-items-center justify-content-center">
         <div v-if="success" class="col-12 text-center">
             <img class="img-fluid mx-auto d-block"  src="../assets/tick.png"/>
             <br>
             <h6 class="text-capitalize text-center">{{title}} Success</h6>
-            <button type="button" @click="close" class="btn btn-primary w-50">OK</button>
         </div>
+
         <div v-if="fail" class="col-12 text-center">
             <img class="img-fluid mx-auto d-block"  src="../assets/exclamation-mark.png"/>
             <br>
             <h6 class="text-capitalize text-center">{{error}}</h6>
-            <button type="button" @click="close" class="btn btn-primary w-50">OK</button>
         </div>
+
+      <button type="button" @click="close" class="btn btn-primary w-50">OK</button>
     </div>
     <br>
 </template>
@@ -59,9 +60,9 @@ export default {
 }
 
 @media only screen and (min-width: 1000px) {
-    img{
+  img {
     width:20%;
     height:60%
-}
+  }
 }
 </style>
